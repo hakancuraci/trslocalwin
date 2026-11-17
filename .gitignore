@@ -1,0 +1,8 @@
+**/bin/
+**/obj/
+native/build/
+.deps/
+models/
+*.partial
+native/build-win/
+dist/

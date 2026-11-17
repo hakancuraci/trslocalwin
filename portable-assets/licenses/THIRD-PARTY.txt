@@ -1,0 +1,17 @@
+FFmpeg
+Bundled executable is supplied by imageio-ffmpeg 0.8.1:
+https://github.com/imageio/imageio-ffmpeg
+https://pypi.org/project/imageio-ffmpeg/0.8.1/
+Binary reports: ffmpeg 9.0.2 essentials build, www.gyan.dev.
+Copyright (c) 2000-2026 the FFmpeg developers.
+This build reports GNU GPL version 3 or later. See FFmpeg-GPL-3.0.txt.
+Build provider and source/build information: https://www.gyan.dev/ffmpeg/builds/
+FFmpeg source project: https://ffmpeg.org/ and https://git.ffmpeg.org/ffmpeg.git
+FFmpeg runs as a separate subprocess. It is not modified by this application.
+
+Balbal model and code
+Powered by balbal — https://github.com/erayyap/balbal
+Code is Apache-2.0; model weights are under balbal Community License 1.1.
+Model: https://huggingface.co/erayyapagci/balbal-v2-manas
+Model weights are downloaded separately and are not included in this package.
+Other dependencies retain their original notices in _internal.

@@ -1,0 +1,14 @@
+balbal
+Copyright 2026 Eray Yapağcı
+
+This product includes code licensed under the Apache License, Version 2.0 (see LICENSE).
+Third-party licenses for flashlight-text and KenLM are in inference/licenses/ (and balbal-v1/inference/licenses/).
+inference/kernels/third_party/onnxruntime/ holds unmodified ONNX Runtime 1.30.0 header files, MIT License (LICENSE in that directory).
+configs/balbal-v2-manas/model_config.yaml derives from NVIDIA's stt_en_fastconformer_ctc_large model configuration (CC-BY-4.0).
+
+C# port modifications (2026-11-17): .NET 8 inference, audio handling,
+normalization, model hub and CLI; C ABI around the upstream native search.
+Upstream revision: 2c0269c7d80950b1fe6b4a50742f6498fcc9a8b5.
+Native ctc_fast_decoder.h and ctc_lm_bonus.h retain the upstream algorithms;
+Python bindings were removed. KenLM integration is adapted from Flashlight's
+MIT licensed KenLM implementation. See native/licenses for notices.

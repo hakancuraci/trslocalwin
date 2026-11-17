@@ -1,0 +1,61 @@
+name: C# Windows validation
+on:
+  workflow_dispatch:
+    inputs:
+      test_model:
+        description: Download pinned Manas weights and test real transcription (CI only)
+        type: boolean
+        default: true
+  push:
+    branches: ['main', 'csharp-windows-validation']
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Find C# sources
+        shell: pwsh
+        run: |
+          $root = if (Test-Path 'csharp/TrsLocal.sln') { 'csharp' } elseif (Test-Path 'TrsLocal.sln') { '.' } else { throw 'C# source tree missing' }
+          "SOURCE_ROOT=$root" >> $env:GITHUB_ENV
+      - name: Publish both Windows applications
+        shell: pwsh
+        run: |
+          & "$env:SOURCE_ROOT/scripts/publish-windows.ps1"
+      - name: Portable runtime and folder watcher tests
+        shell: pwsh
+        run: |
+          dotnet run --project "$env:SOURCE_ROOT/tests/TrsLocal.Tests" -c Release -r win-x64
+          if ($LASTEXITCODE) { throw 'Watcher tests failed' }
+      - name: Python reference regression tests
+        shell: pwsh
+        run: |
+          dotnet run --project "$env:SOURCE_ROOT/tests/Balbal.Tests" -c Release -r win-x64
+          if ($LASTEXITCODE) { throw 'Regression tests failed' }
+      - name: FFmpeg format integration tests
+        shell: pwsh
+        run: |
+          $env:BALBAL_FFMPEG = (Resolve-Path "$env:SOURCE_ROOT/portable-assets/tools/ffmpeg/ffmpeg.exe").Path
+          dotnet run --project "$env:SOURCE_ROOT/tests/Balbal.Tests" -c Release -r win-x64 -- --ffmpeg-tests
+          if ($LASTEXITCODE) { throw 'FFmpeg tests failed' }
+      - name: EXE, window, worker and optional Manas tests
+        shell: pwsh
+        env:
+          TEST_MODEL: ${{ github.event_name == 'push' || inputs.test_model }}
+        run: |
+          & "$env:SOURCE_ROOT/scripts/test-windows.ps1" -TestModel:($env:TEST_MODEL -eq 'true')
+      - name: Upload Windows package and test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trslocal-windows-validation
+          path: |
+            ${{ env.SOURCE_ROOT }}/dist/BalbalTurkce
+            ${{ env.SOURCE_ROOT }}/dist/windows-validation.json
+          retention-days: 7

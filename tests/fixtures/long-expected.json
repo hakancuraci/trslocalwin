@@ -1,0 +1,1 @@
+{"text": "", "words": [], "no_speech": true, "model": "balbal-v2", "runtime": "onnx", "duration_seconds": 32.0, "inference_seconds": 2.4832140470000468, "realtime_factor": 12.886525041471545}

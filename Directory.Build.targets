@@ -1,0 +1,8 @@
+<Project>
+ <ItemGroup>
+  <Content Include="$(MSBuildThisFileDirectory)runtimes/linux-x64/native/libbalbal_native.so" Condition="Exists('$(MSBuildThisFileDirectory)runtimes/linux-x64/native/libbalbal_native.so') and '$(RuntimeIdentifier)' != 'win-x64'" Link="libbalbal_native.so" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  <Content Include="$(MSBuildThisFileDirectory)runtimes/win-x64/native/balbal_native.dll" Condition="Exists('$(MSBuildThisFileDirectory)runtimes/win-x64/native/balbal_native.dll')" Link="balbal_native.dll" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  <Content Include="$(MSBuildThisFileDirectory)tools/ffmpeg/**/*" Link="tools/ffmpeg/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  <Content Include="$(MSBuildThisFileDirectory)portable-assets/**/*" Condition="'$(UseWindowsForms)' == 'true'" Link="%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+ </ItemGroup>
+</Project>

@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D4FEBD97-26CE-4B22-8D75-6911B43A6230}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balbal", "src\Balbal\Balbal.csproj", "{75BAD15C-677B-4DE7-B574-2575CC80A7C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrsLocal.Core", "src\TrsLocal.Core\TrsLocal.Core.csproj", "{0642067F-B22A-444E-BCC8-678F8506866B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalbalTurkce", "src\BalbalTurkce\BalbalTurkce.csproj", "{E023F148-C68F-4CD1-AD1A-CD8DF2A011B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalbalIzleyici", "src\BalbalIzleyici\BalbalIzleyici.csproj", "{FDB1FB32-17FE-47B2-A4D9-2DFD67BDB439}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E441DC7B-9F6D-48FD-B7A6-F0AA0C177590}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrsLocal.Tests", "tests\TrsLocal.Tests\TrsLocal.Tests.csproj", "{CDDB511F-0599-4B17-BA2F-6942A9290064}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75BAD15C-677B-4DE7-B574-2575CC80A7C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75BAD15C-677B-4DE7-B574-2575CC80A7C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75BAD15C-677B-4DE7-B574-2575CC80A7C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75BAD15C-677B-4DE7-B574-2575CC80A7C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0642067F-B22A-444E-BCC8-678F8506866B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0642067F-B22A-444E-BCC8-678F8506866B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0642067F-B22A-444E-BCC8-678F8506866B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0642067F-B22A-444E-BCC8-678F8506866B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E023F148-C68F-4CD1-AD1A-CD8DF2A011B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E023F148-C68F-4CD1-AD1A-CD8DF2A011B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E023F148-C68F-4CD1-AD1A-CD8DF2A011B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E023F148-C68F-4CD1-AD1A-CD8DF2A011B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDB1FB32-17FE-47B2-A4D9-2DFD67BDB439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDB1FB32-17FE-47B2-A4D9-2DFD67BDB439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDB1FB32-17FE-47B2-A4D9-2DFD67BDB439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDB1FB32-17FE-47B2-A4D9-2DFD67BDB439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDDB511F-0599-4B17-BA2F-6942A9290064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDDB511F-0599-4B17-BA2F-6942A9290064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDDB511F-0599-4B17-BA2F-6942A9290064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDDB511F-0599-4B17-BA2F-6942A9290064}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{75BAD15C-677B-4DE7-B574-2575CC80A7C9} = {D4FEBD97-26CE-4B22-8D75-6911B43A6230}
+		{0642067F-B22A-444E-BCC8-678F8506866B} = {D4FEBD97-26CE-4B22-8D75-6911B43A6230}
+		{E023F148-C68F-4CD1-AD1A-CD8DF2A011B8} = {D4FEBD97-26CE-4B22-8D75-6911B43A6230}
+		{FDB1FB32-17FE-47B2-A4D9-2DFD67BDB439} = {D4FEBD97-26CE-4B22-8D75-6911B43A6230}
+		{CDDB511F-0599-4B17-BA2F-6942A9290064} = {E441DC7B-9F6D-48FD-B7A6-F0AA0C177590}
+	EndGlobalSection
+EndGlobal
