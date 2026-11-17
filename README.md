@@ -19,6 +19,8 @@ Windows'ta .NET 8 SDK kuruluysa:
 
 ## Windows testleri ve indirme
 
+**Windows testleri geçti:** [başarılı çalışma](https://github.com/hakancuraci/trslocalwin/actions/runs/44128184716) · [test edilmiş Windows paketi](https://github.com/hakancuraci/trslocalwin/actions/runs/44128184716/artifacts/14349655224). EXE açılışı, worker kapanışı, FFmpeg ve gerçek Manas MP3 dönüşümü doğrulandı.
+
 [GitHub Actions](https://github.com/hakancuraci/trslocalwin/actions/workflows/windows-validation.yml) Windows runner'ında iki uygulamayı derler; pencere açılışı/kapanışı, worker, FFmpeg ve gerçek MP3 dönüşümünü test eder. Başarılı çalışmanın `trslocal-windows-validation` artifact'i Windows paketini ve JSON test raporunu içerir. Model ağırlıkları artifact'e dahil edilmez.
 
 Model indirmesi yalnız CI testi içindir; dağıtılan uygulama çevrimdışı kalır. Sonuç için Actions çalışmasının durumuna bakın; derlenmiş olması tüm testlerin geçtiği anlamına gelmez.

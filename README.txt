@@ -43,9 +43,9 @@ Pencereler WinForms ile yeniden yazılmıştır; Tkinter ile piksel düzeyinde a
 değildir. İki pencerenin iş akışı ve Türkçe kontrolleri korunmuştur.
 Gerçek Manas fast modeli ve depodaki first-test2.mp3 kullanılarak Python ile
 C# transkriptlerinin birebir eşleştiği Linux üzerinde doğrulanmıştır.
-Windows x64 EXE ve native decoder DLL derlenmiştir; Windows GUI'nin fiilen
-çalıştırılması bu Linux ortamında doğrulanamamıştır. İlk Windows çalıştırma
-kontrolleri VALIDATION.md içinde açıklanır.
+Windows x64 EXE ve native decoder DLL gerçek Windows GitHub Actions runner'ında
+çalıştırıldı; pencere açılışı/kapanışı, worker sonlandırma ve gerçek MP3
+dönüştürme testleri geçti. Ayrıntılar VALIDATION.md içinde açıklanır.
 
 GÜNLÜKLER
 İşleyici: transcript/islem.log (2 MB, 3 yedek)

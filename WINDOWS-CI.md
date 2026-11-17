@@ -1,17 +1,11 @@
-# Gerçek Windows üzerinde doğrulama
+# Windows üzerinde doğrulama
 
-Bu iş akışı henüz GitHub'a gönderilmedi ve çalıştırılmadı. `windows-latest` GitHub runner'ında çalışmak üzere hazırlanmıştır; Linux sonuçları Windows sonucu gibi raporlanmaz.
+Workflow bu repoda çalıştırıldı ve **başarılı tamamlandı**: [44128184716](https://github.com/hakancuraci/trslocalwin/actions/runs/44128184716).
 
-Mevcut `hakancuraci/trslocal` deposuna önerilen yerleşim:
+`main` dalına push, Windows testlerini başlatır. Actions ekranındaki Run workflow ile Manas testini açıp kapatarak manuel çalıştırma da yapılabilir. Kaynaklar bu reponun kökündedir.
 
-- C# kaynak ağacı: `csharp/` altında (TrsLocal.sln, src, tests, runtimes, portable-assets, scripts).
-- Workflow: depo kökündeki `.github/workflows/windows-validation.yml`.
-- Önerilen ayrı dal: `csharp-windows-validation`. Bu dala push testleri başlatır; main'e otomatik birleştirme yapılmaz.
+Testler: Windows self-contained publish, klasör izleyicisi, Python referansları, 19 FFmpeg format varyantı, gerçek pencere açılışı/kapanışı, worker kapanışı. Manas testi sabit model revizyonunu CI içinde indirip MP3'ü işler; Python metniyle karşılaştırır. İndirme yalnız test betiğindedir; dağıtılan uygulama çevrimdışı kalır.
 
-Testler: Windows self-contained publish, klasör izleyicisi testleri, Python referansları, FFmpeg format testleri, gerçek pencere handle'ı oluşturma/kapatma, worker kapanışı. Manas testi açıkken CI sabit model revizyonunu indirip depodaki MP3'ü işler ve Python referansıyla metni karşılaştırır. İndirme yalnız CI test betiğindedir; dağıtılan uygulama çevrimdışı kalır.
+Paket ve JSON raporu `trslocal-windows-validation` artifact'inde tutulur. Model ağırlıkları test sonunda silinir ve artifact'e dahil edilmez. Artifacts varsayılan 7 gün saklanır.
 
-Betik CI'nın geçici `dist` klasörünü kullanır; test sonrası Manas dosyalarını temizler. Kendi kalıcı model klasörünüzü bu test staging klasörüne koymayın.
-
-Rapor ve Windows paketi `trslocal-windows-validation` adlı Actions artifact'ine yüklenir. Bu test temel pencere/işlem kontrolüdür; her düğmeyi tıklayan kapsamlı bir kullanıcı arayüzü testi değildir.
-
-Çalıştırmak için C# kaynakları ve workflow dosyası GitHub'a aktarılmalı. Sonuç ancak GitHub Actions çalışması tamamlandıktan sonra Windows'ta doğrulanmış sayılır.
+Bu, her düğmeyi tıklayan kapsamlı bir GUI testi değildir. Test betiği geçici `dist` klasörü için tasarlanmıştır; kalıcı model klasörünüzü oraya koymayın.

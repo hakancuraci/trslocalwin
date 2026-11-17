@@ -1,7 +1,9 @@
 # TRSLocal C# doğrulaması
 
 Referans: [hakancuraci/trslocal](https://github.com/hakancuraci/trslocal), `99a46ae3fc7e8b8a6eea596a815834f08c7e47bf`.
-Ortam: Linux x64, .NET SDK 8.0.428, ONNX Runtime 1.32.0 (referans dağıtımla aynı sürüm).
+İlk doğrulama: Linux x64, .NET SDK 8.0.428, ONNX Runtime 1.32.0.
+
+**Gerçek Windows doğrulaması başarılı:** [GitHub Actions çalışması](https://github.com/hakancuraci/trslocalwin/actions/runs/44128184716), test edilen commit `d1da87543df74f653d39333ad26380574d588803`.
 
 ## Korunan davranış
 
@@ -36,17 +38,23 @@ Ortam: Linux x64, .NET SDK 8.0.428, ONNX Runtime 1.32.0 (referans dağıtımla a
 
 Bu tek kayıtta eşitlik genel WER/CER eşitliği iddiası değildir.
 
-## Bu ortamda doğrulanamayanlar
+## Gerçek Windows sonucu
 
-Linux üzerinde Windows GUI açılamadığı için Windows pencerelerinde tıklama/çizim, Windows Job kapanış davranışı ve Windows DLL'sinin fiilen yüklenmesi çalıştırılarak doğrulanamadı. Derleme ve paket incelemesi bu kontrollerin yerine geçmez. Arayüz WinForms ile yeniden yazılmıştır; Tkinter ile piksel eşitliği iddiası yoktur.
+GitHub `windows-latest` runner'ında tüm adımlar geçti:
 
-İlk Windows kontrolü:
+- 20 portable/klasör izleyicisi assertion'ı.
+- 608 Python referans assertion'ı.
+- 46 FFmpeg entegrasyon assertion'ı (19 ses/video varyantı; Linux'a özel üç iptal testi Windows'ta koşulmaz).
+- Windows decoder DLL'si yüklenerek tokenizer/KenLM/Manas inference çalıştı.
+- Her iki EXE gerçek Windows pencere handle'ı oluşturdu ve normal kapandı.
+- İzleyici kapanırken worker süreci sonlandı; aktif worker varlığı ayrıca kontrol edildi.
+- Gerçek MP3 metin üretti ve Python Manas referansıyla karakter karakter eşleşti.
 
-1. Kendi `models/balbal-v2-manas` klasörünüzle `BalbalTurkce.exe` açın; yerel model kontrolünü çalıştırın.
-2. Bir MP3 seçip dönüştürün, metni düzenleyip TXT kaydedin.
-3. `BalbalIzleyici.exe` açın; yeni bir MP3'ü uygulama klasörüne kopyalayın. Sabit kaldıktan sonra TXT üretimini kontrol edin.
-4. Aynı TXT varken tekrar taramada değişmediğini kontrol edin.
-5. Dönüşüm sırasında pencereyi kapatın; worker/FFmpeg alt süreçlerinin kapandığını kontrol edin.
+[Windows test raporu ve paket](https://github.com/hakancuraci/trslocalwin/actions/runs/44128184716/artifacts/14349655224).
+
+İlk çalışmada yalnız test betiğinin FFmpeg sürüm çıktısını erken kesen pipeline'ı hata verdi. Tam çıktıyı okuyacak şekilde düzeltildikten sonra bütün Windows testleri geçti.
+
+Bu kontroller tüm düğmeleri tıklayan kapsamlı bir arayüz testi veya geniş bir WER/CER benchmark'ı değildir. WinForms arayüzü kaynak Tkinter arayüzüyle piksel eşitliği iddiası taşımaz.
 
 ## Kaynaktan test
 
