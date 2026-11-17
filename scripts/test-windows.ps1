@@ -50,8 +50,10 @@ function Window([string]$Executable, [switch]$RequireWorker) {
 }
 try {
     Check (Test-Path "$app/balbal_native.dll") 'Windows decoder DLL bundled'
-    & "$app/tools/ffmpeg/ffmpeg.exe" -version | Select-Object -First 1
-    Check ($LASTEXITCODE -eq 0) 'Bundled FFmpeg executes on Windows'
+    $version = & "$app/tools/ffmpeg/ffmpeg.exe" -version
+    $versionCode = $LASTEXITCODE
+    $version | Select-Object -First 1
+    Check ($versionCode -eq 0) 'Bundled FFmpeg executes on Windows'
     # This must report missing model, not a native DLL/runtime loader failure.
     $missing = Worker -Arguments @('--worker', '--job', 'model')
     Check ($missing.Code -ne 0 -and @($missing.Events | Where-Object { $_.kind -eq 'fatal' -and $_.message -match 'Yerel model eksik' }).Count -gt 0) 'Missing local model handled without a crash'
